@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<DecentSampler minVersion="1.0.0">
+  <ui bgImage="voice-samples/screentest.png" width="300" height="250" layoutMode="relative"
+      bgMode="top_left">
+    <tab name="main">
+      <label x="30" y="95" textColor="FFFFFFFF"
+                    text="Filter" width="25" height="25"/>
+      <control x="30" y="80" width="25" height="25" parameterName="Reverb" type="float" minValue="0" maxValue="1" textColor="FF000000" value="0.5" style="custom_skin_vertical_drag" customSkinImage="voice-samples/salmon_knob.png" customSkinNumFrames="31" customSkinImageOrientation="vertical" mouseDragSensitivity="100">
+        <binding type="effect" level="instrument" position="0" 
+                 parameter="FX_FILTER_FREQUENCY" translation="linear" 
+                 translationOutputMin="0" translationOutputMax="22000" />
+      </control>
+      <label x="245" y="95" textColor="FFFFFFFF"
+                    text="Release" width="25" height="25"/>
+      <control x="245" y="80" width="25" height="25" parameterName="Reverb" type="float" minValue="0" maxValue="1" textColor="FF000000" value="0.5" style="custom_skin_vertical_drag" customSkinImage="voice-samples/blau_light.png" customSkinNumFrames="31" customSkinImageOrientation="vertical" mouseDragSensitivity="100">
+        <binding type="amp" level="instrument" position="0" parameter="ENV_RELEASE" />
+      </control>
+
+    </tab>
+  </ui>
+  <groups volume="-3dB" seqMode="round_robin">
+    <group>
+      <sample loNote="61" hiNote="69" rootNote="67" seqPosition="1" path="voice-samples/vocal-G3-r1.wav"
+              length="758656"/>
+      <sample loNote="61" hiNote="69" rootNote="67" seqPosition="2" path="voice-samples/vocal-G3-r2.wav"
+              length="758656"/>
+      <sample loNote="61" hiNote="69" rootNote="67" seqPosition="3" path="voice-samples/vocal-G3-r3.wav"
+              length="758656"/>        
+      <sample loNote="68" hiNote="77" rootNote="74" seqPosition="1" path="voice-samples/vocal-D4-r1.wav"
+              length="595328"/>
+      <sample loNote="68" hiNote="77" rootNote="74" seqPosition="2" path="voice-samples/vocal-D4-r2.wav"
+              length="595328"/>
+      <sample loNote="68" hiNote="77" rootNote="74" seqPosition="3" path="voice-samples/vocal-D4-r3.wav"
+              length="595328"/>                            
+      <sample loNote="75" hiNote="89" rootNote="81" seqPosition="1" path="voice-samples/vocal-A5-r1.wav"
+              length="457600"/>
+      <sample loNote="75" hiNote="89" rootNote="81" seqPosition="2" path="voice-samples/vocal-A5-r2.wav"
+              length="457600"/>
+      <sample loNote="75" hiNote="89" rootNote="81" seqPosition="3" path="voice-samples/vocal-A5-r3.wav"
+              length="457600"/>                            
+      <sample loNote="82" hiNote="96" rootNote="88" seqPosition="1" path="voice-samples/vocal-E5-r1.wav"
+              length="469888"/>
+      <sample loNote="82" hiNote="96" rootNote="88" seqPosition="2" path="voice-samples/vocal-E5-r2.wav"
+              length="469888"/>
+      <sample loNote="82" hiNote="96" rootNote="88" seqPosition="3" path="voice-samples/vocal-E5-r3.wav"
+              length="469888"/>                            
+    </group>
+  </groups>
+  <effects>
+    <effect type="lowpass" frequency="22000.0"/>
+    <effect type="reverb" wetLevel="0.5"/>
+    <effect type="delay" delayTimeFormat="musical_time" delayTime="10" stereoOffset="0.01" 
+            feedback="0.3" wetLevel="0.5" />
+  </effects>
+  <midi>
+    <!-- This causes MIDI CC 1 to control the 4th knob (cutoff) -->
+    <cc number="1">
+      <binding level="ui" type="control" parameter="VALUE" position="3" 
+               translation="linear" translationOutputMin="0" 
+               translationOutputMax="1" />
+    </cc>
+  </midi>
+</DecentSampler>
